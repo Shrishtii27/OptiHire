@@ -1,29 +1,28 @@
-import Navbar from "../components/Navbar";
-import ResumeCard from "../components/ResumeCard";
+import Navbar from "~/components/Navbar";
+import ResumeCard from "~/components/ResumeCard";
 
-import type { Route } from "./+types/home";
-import { resumes } from "../constants/index";
+import { resumes } from "~/constants";
 import { usePuterStore } from "~/lib/puter";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
-export function meta({ }: Route.MetaArgs) {
+export function meta() {
   return [
-    { title: "OptiHire" },
-    { name: "description", content: "Get Feedback for your dream job!" },
+    { title: "OptiHire | Dashboard" },
+    { name: "description", content: "Track your resume applications and AI-powered feedback scores" },
   ];
 }
 
-export default function Home() {
+export default function Dashboard() {
   const { auth } = usePuterStore();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!auth.isAuthenticated) navigate('/auth?next=/');
+    if (!auth.isAuthenticated) navigate('/login?next=/dashboard');
   }, [auth.isAuthenticated])
 
 
-  return <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+  return <main className="bg-[url('/images/bg-main.svg')] bg-cover pt-10">
 
     <Navbar />
 
@@ -33,7 +32,7 @@ export default function Home() {
           Track Your Applications & Resume Ratings
         </h1>
         <h2>
-          Review your submisssion and check AI-powered feedback
+          Review your submissions and check AI-powered feedback
         </h2>
       </div>
 

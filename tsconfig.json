@@ -28,9 +28,6 @@
       "~/*": [
         "./app/*"
       ],
-      "constants": [
-        "path/to/your/constants/index.ts"
-      ],
       "@types/*": [
         "./types/*"
       ]
